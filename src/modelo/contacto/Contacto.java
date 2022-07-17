@@ -1,4 +1,4 @@
-package src.modelo.Contacto;
+package src.modelo.contacto;
 
 public class Contacto {
 	public int cod;

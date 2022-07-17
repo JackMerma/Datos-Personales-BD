@@ -1,10 +1,10 @@
-package src.modelo.Contacto;
+package src.modelo.contacto;
 
 import java.sql.Connection;
 import java.sql.*;
 import java.util.*;
 
-//import src.modelo.DAO;
+import src.modelo.*;
 
 public class ContactoDAO extends DAO<Contacto> {
 
@@ -62,7 +62,7 @@ public class ContactoDAO extends DAO<Contacto> {
 
 			// llenamos los datos
 			ps.setString(1,contacto.getCod()+"");
-			ps.setString(2,contacto.getcontactoElectronico()+"");
+			ps.setString(2,contacto.getContactoElectronico()+"");
 			ps.setString(3,contacto.getNumero()+"");
 			ps.setString(4,contacto.getDireccion()+"");
 			ps.setString(5, "A");
@@ -90,7 +90,7 @@ public class ContactoDAO extends DAO<Contacto> {
 			ps = bd.prepareStatement(sql);
 
 			// llenamos datos
-			ps.setString(1,contacto.getcontactoElectronico()+"");
+			ps.setString(1,contacto.getContactoElectronico()+"");
 			ps.setString(2,contacto.getNumero()+"");
 			ps.setString(3,contacto.getDireccion()+"");
 			ps.setString(4,contacto.getEstadoRegistro()+"");
