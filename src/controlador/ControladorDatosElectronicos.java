@@ -2,44 +2,42 @@ package src.controlador;
 
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import src.modelo.contacto.Contacto;
-import src.modelo.contacto.ContactoDAO;
-import src.vista.VistaContacto;
+import src.modelo.datosElectronicos.DatosElectronicos;
+import src.modelo.datosElectronicos.DatosElectronicosDAO;
+import src.vista.VistaDatosElectronicos;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class ControladorContacto extends Controlador<Contacto> {
+public class ControladorDatosElectronicos extends Controlador<DatosElectronicos> {
 
-	public VistaContacto vista = (VistaContacto) vistaSuper;
-	public static ContactoDAO contactoDAO = new ContactoDAO();
+	public VistaDatosElectronicos vista = (VistaDatosElectronicos) vistaSuper;
+	public static DatosElectronicosDAO datosElectronicosDAO = new DatosElectronicosDAO();
 
 	private int CarFlaAct = 0;
 	private int action; // 1: agregar,
 
 	// constructor de la clase, se pasan los parametros de la vistaEspecifica
-	public ControladorContacto(VistaContacto v) {
-		super(v, contactoDAO);
+	public ControladorDatosElectronicos(VistaDatosElectronicos v) {
+		super(v, datosElectronicosDAO);
 		this.vista = v;
 		listar(vista.tabla);
 	}
 
 	// metodo auxiliar para obtener un objeto con los datos de la vista
 	@Override
-	public Contacto getOficinaDetalle() {
-		Contacto classInterna = new Contacto();
+	public DatosElectronicos getOficinaDetalle() {
+		DatosElectronicos classInterna = new DatosElectronicos();
 		String cod = vista.cod.getText();
-		String contElectronico = vista.contElectronico.getText();
-		String numero = vista.numero.getText();
-		String direccion = vista.direccion.getText();
+		String correo = vista.correo.getText();
+		String paginaWeb = vista.paginaWeb.getText();
 		String estaRegis = vista.estaRegis.getText();
 
 		// Creamos un objeto
 		classInterna.setCod(Integer.parseInt(cod));
-		classInterna.setContactoElectronico(Integer.parseInt(contElectronico));
-		classInterna.setNumero(Integer.parseInt(numero));
-		classInterna.setDireccion(direccion);
+		classInterna.setCorreo(correo);
+		classInterna.setPaginaWeb(paginaWeb);
 		classInterna.setEstadoRegistro(estaRegis.charAt(0));
 
 		return classInterna;
@@ -53,16 +51,15 @@ public class ControladorContacto extends Controlador<Contacto> {
 		tabla.setModel(modelo);
 
 		// Tenemos que cambiar esta parte
-		ArrayList<Contacto> lista = contactoDAO.listar();
-		Object[] objeto = new Object[5]; // cambiar segun el numero de atributos
+		ArrayList<DatosElectronicos> lista = datosElectronicosDAO.listar();
+		Object[] objeto = new Object[4]; // cambiar segun el numero de atributos
 
 
 		for (int i = 0; i < lista.size(); i++) {
 			objeto[0] = lista.get(i).getCod();
-			objeto[1] = lista.get(i).getContactoElectronico();
-			objeto[2] = lista.get(i).getNumero();
-			objeto[3] = lista.get(i).getDireccion();
-			objeto[4] = lista.get(i).getEstadoRegistro();
+			objeto[1] = lista.get(i).getCorreo();
+			objeto[2] = lista.get(i).getPaginaWeb();
+			objeto[3] = lista.get(i).getEstadoRegistro();
 			modelo.addRow(objeto);
 		}
 	}
@@ -73,15 +70,13 @@ public class ControladorContacto extends Controlador<Contacto> {
 	public void llenarDatosDeTablaSelecionada(int fila, String estadoRegistro) {
 
 		String cod = (String) vista.tabla.getValueAt(fila, 0).toString();
-		String contElectronico = (String) vista.tabla.getValueAt(fila, 1).toString();
-		String numero = (String) vista.tabla.getValueAt(fila, 2).toString();
-		String direccion = (String) vista.tabla.getValueAt(fila, 3).toString();
-		String estareg = (String) vista.tabla.getValueAt(fila, 4).toString();
+		String correo = (String) vista.tabla.getValueAt(fila, 1).toString();
+		String paginaWeb = (String) vista.tabla.getValueAt(fila, 2).toString();
+		String estareg = (String) vista.tabla.getValueAt(fila, 3).toString();
 
 		vista.cod.setText(cod);
-		vista.contElectronico.setText(contElectronico);
-		vista.numero.setText(numero);
-		vista.direccion.setText(direccion);
+		vista.correo.setText(correo);
+		vista.paginaWeb.setText(paginaWeb);
 		vista.estaRegis.setText(estareg);
 
 		if (estadoRegistro.equals("DEFAULT")) {
@@ -96,15 +91,13 @@ public class ControladorContacto extends Controlador<Contacto> {
 	@Override
 	public void limpiar() {
 		vista.cod.setText("");
-		vista.contElectronico.setText("");
-		vista.numero.setText("");
-		vista.direccion.setText("");
+		vista.correo.setText("");
+		vista.paginaWeb.setText("");
 		vista.estaRegis.setText("");
 
 		vista.cod.setEditable(true);
-		vista.contElectronico.setEditable(true);
-		vista.numero.setEditable(true);
-		vista.direccion.setEditable(true);
+		vista.correo.setEditable(true);
+		vista.paginaWeb.setEditable(true);
 		vista.estaRegis.setEditable(true);
 	}
 
@@ -148,9 +141,8 @@ public class ControladorContacto extends Controlador<Contacto> {
 				llenarDatosDeTablaSelecionada(fila, "*");
 
 				vista.cod.setEditable(false);
-				vista.contElectronico.setEditable(false);
-				vista.numero.setEditable(false);
-				vista.direccion.setEditable(false);
+				vista.correo.setEditable(false);
+				vista.paginaWeb.setEditable(false);
 				vista.estaRegis.setEditable(false);
 
 				CarFlaAct = 1;
@@ -173,9 +165,8 @@ public class ControladorContacto extends Controlador<Contacto> {
 				llenarDatosDeTablaSelecionada(fila, "I");
 
 				vista.cod.setEditable(false);
-				vista.contElectronico.setEditable(false);
-				vista.numero.setEditable(false);
-				vista.direccion.setEditable(false);
+				vista.correo.setEditable(false);
+				vista.paginaWeb.setEditable(false);
 				vista.estaRegis.setEditable(false);
 
 				CarFlaAct = 1;
@@ -193,9 +184,8 @@ public class ControladorContacto extends Controlador<Contacto> {
 				llenarDatosDeTablaSelecionada(fila, "A");
 
 				vista.cod.setEditable(false);
-				vista.contElectronico.setEditable(false);
-				vista.numero.setEditable(false);
-				vista.direccion.setEditable(false);
+				vista.correo.setEditable(false);
+				vista.paginaWeb.setEditable(false);
 				vista.estaRegis.setEditable(false);
 
 				CarFlaAct = 1;
