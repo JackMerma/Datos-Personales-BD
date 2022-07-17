@@ -86,7 +86,7 @@ public class DatosGeneralesDAO extends DAO<DatosGenerales> {
 	// modificar
 	public int modificar(DatosGenerales datosGenerales){
 		int state = 0;
-		String sql = "UPDATE `DATOS_GENERALES` SET `primerNombre` = ?, `segundoNombre` = ?, `primerApellido` = ?, ``segundoApellido = ?, `fechaNacimiento` = ?, `estaRegis` = ? WHERE `DATOS_GENERALES`.`cod` = ?;";
+		String sql = "UPDATE `DATOS_GENERALES` SET `primerNombre` = ?, `segundoNombre` = ?, `primerApellido` = ?, `segundoApellido` = ?, `fechaNacimiento` = ?, `estaRegis` = ? WHERE `DATOS_GENERALES`.`cod` = ?;";
 
 		try{
 			con.conectar();
