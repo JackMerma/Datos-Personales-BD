@@ -15,7 +15,7 @@ public class VistaDatosGenerales extends Vista {
 	public JTextField estaRegis;
 
 	public VistaDatosGenerales() {
-		super("TABLA DatosGenerales", new String[] { "Codigo", "PrimerNombre", "SegundoNombre", "PrimerApellido", "SegundoApellido", "FechaNacimiento", "EstadoRegistro" });
+		super("TABLA DATOS GENERALES", new String[] { "Codigo", "PrimerNombre", "SegundoNombre", "PrimerApellido", "SegundoApellido", "FechaNacimiento", "EstadoRegistro" });
 	}
 
 	/*

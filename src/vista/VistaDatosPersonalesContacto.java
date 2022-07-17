@@ -23,7 +23,7 @@ public class VistaDatosPersonalesContacto extends Vista {
 		
 		JPanel addPanelContent = new JPanel(new BorderLayout());
 
-		JPanel addPanelContentContent = new JPanel(new GridLayout(3, 1, 5, 10));
+		JPanel addPanelContentContent = new JPanel(new GridLayout(3, 1, 5, 45));
 
 		// instaciomos Atributos
 		cod = new JTextField(20);

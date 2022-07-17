@@ -39,7 +39,7 @@ public class VistaDatosElectronicos extends Vista {
 		JPanel correoPanel = addComponente(correo, "Correo:");
 
 		// paginaWeb field
-		JPanel paginaWebPanel = addComponente(paginaWeb, "Pagin Web:");
+		JPanel paginaWebPanel = addComponente(paginaWeb, "Pagina Web:");
 
 		// estaRegis field
 		JPanel estaRegisPanel = addComponente(estaRegis, "Estado de registro:");
