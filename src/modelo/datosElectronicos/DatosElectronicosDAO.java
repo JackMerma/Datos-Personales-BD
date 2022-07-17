@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.*;
 import java.util.*;
 
-//import src.modelo.DAO;
+import src.modelo.*;
 
 public class DatosElectronicosDAO extends DAO<DatosElectronicos> {
 
@@ -32,9 +32,9 @@ public class DatosElectronicosDAO extends DAO<DatosElectronicos> {
 			while(rs.next()){
 				classNormal = new DatosElectronicos();
 				classNormal.setCod(rs.getInt(1));
-				classNormal.setCorreo(rs.getInt(2));
-				classNormal.setPaginaWeb(rs.getInt(3));
-				classNormal.setEstadoRegistro(rs.getString(4charAt(0));
+				classNormal.setCorreo(rs.getString(2));
+				classNormal.setPaginaWeb(rs.getString(3));
+				classNormal.setEstadoRegistro(rs.getString(4).charAt(0));
 				listDatosElectronicos.add(classNormal);
 			}
 			System.out.println("DatosElectronicosDAO Listar:CORRECTO");
@@ -91,7 +91,7 @@ public class DatosElectronicosDAO extends DAO<DatosElectronicos> {
 			ps.setString(1,datosElectronicos.getCorreo()+"");
 			ps.setString(2,datosElectronicos.getPaginaWeb()+"");
 			ps.setString(3,datosElectronicos.getEstadoRegistro()+"");
-			ps.setString(5,datosElectronicos.getCod()+"");
+			ps.setString(4,datosElectronicos.getCod()+"");
 
 			state = ps.executeUpdate(); 
 			System.out.println("DatosElectronicosDAO ModificarInter: CORRECTO");

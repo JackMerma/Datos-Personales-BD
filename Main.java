@@ -99,14 +99,13 @@ public class Main implements ActionListener {
 		VistaContacto vi = new VistaContacto();
 		frameContent.add(vi.getContent());
 		ControladorContacto con = new ControladorContacto(vi);
-		//ControladorCargo con = new ControladorCargo(vi);
-
 	}
 
 	// DATOS ELECTRONICOS -------------------------------------
 	public static void generateContent_DatElec() {
 		VistaDatosElectronicos vi = new VistaDatosElectronicos();
 		frameContent.add(vi.getContent());
+		ControladorDatosElectronicos con = new ControladorDatosElectronicos(vi);
 	}
 
 	// DATOS GENERALES -------------------------------------
