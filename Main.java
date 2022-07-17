@@ -1,8 +1,8 @@
-import src.vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.vista.*;
 import src.modelo.*;
-//import src.controlador.*;
+import src.controlador.*;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -57,10 +57,9 @@ public class Main implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object E = e.getActionCommand();
 		FrameContent();
-		if (E.equals("Contato")) {
+		if (E.equals("Contacto")) {
 			System.out.println("Contacto");
 			generateContent_Contacto();
-
 		} else if (E.equals("Datos Electronicos")) {
 			System.out.println("Datos Electronicos");
 			generateContent_DatElec();
@@ -99,6 +98,7 @@ public class Main implements ActionListener {
 	public static void generateContent_Contacto() {
 		VistaContacto vi = new VistaContacto();
 		frameContent.add(vi.getContent());
+		ControladorContacto con = new ControladorContacto(vi);
 		//ControladorCargo con = new ControladorCargo(vi);
 
 	}
