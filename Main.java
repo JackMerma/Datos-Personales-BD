@@ -112,7 +112,7 @@ public class Main implements ActionListener {
 	public static void generateContent_DatGen() {
 		VistaDatosGenerales vi = new VistaDatosGenerales();
 		frameContent.add(vi.getContent());
-		//ControladorCategoriaCliente con = new ControladorCategoriaCliente(vi);
+		ControladorDatosGenerales con = new ControladorDatosGenerales(vi);
 	}
 
 	// DATOS IMPORTANTES -------------------------------------
