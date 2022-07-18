@@ -133,7 +133,7 @@ public class Main implements ActionListener {
 	public static void generateContent_DatPerCont() {
 		VistaDatosPersonalesContacto vi = new VistaDatosPersonalesContacto();
 		frameContent.add(vi.getContent());
-
+		ControladorDatosPersonalesContacto con = new ControladorDatosPersonalesContacto(vi);
 	}
 
 	// PROCEDENCIA -------------------------------------
