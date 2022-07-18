@@ -126,6 +126,7 @@ public class Main implements ActionListener {
 	public static void generateContent_DatPer() {
 		VistaDatosPersonales vi = new VistaDatosPersonales();
 		frameContent.add(vi.getContent());
+		ControladorDatosPersonales con = new ControladorDatosPersonales(vi);
 	}
 
 	// DATOS PERSONALES CONTACTO -------------------------------------

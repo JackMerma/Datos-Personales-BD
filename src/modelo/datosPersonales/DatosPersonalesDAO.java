@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.*;
 import java.util.*;
 
-//import src.modelo.DAO;
+import src.modelo.*;
 
 public class DatosPersonalesDAO extends DAO<DatosPersonales> {
 
@@ -32,8 +32,8 @@ public class DatosPersonalesDAO extends DAO<DatosPersonales> {
 			while(rs.next()){
 				classNormal = new DatosPersonales();
 				classNormal.setCod(rs.getInt(1));
-				classNormal.setDatosGeneralesCod(rs.getInt(2));
-				classNormal.setDatosImportantesCod(rs.getInt(3));
+				classNormal.setDatosGeneralesCodigo(rs.getInt(2));
+				classNormal.setDatosImportantesCodigo(rs.getInt(3));
 				classNormal.setEstadoRegistro(rs.getString(4).charAt(0));
 				listDatosPersonales.add(classNormal);
 			}
@@ -61,8 +61,8 @@ public class DatosPersonalesDAO extends DAO<DatosPersonales> {
 
 			// llenamos los datos
 			ps.setString(1,datosPersonales.getCod()+"");
-			ps.setString(2,datosPersonales.getDatosGeneralesCod()+"");
-			ps.setString(3,datosPersonales.getDatosImportantesCod()+"");
+			ps.setString(2,datosPersonales.getDatosGeneralesCodigo()+"");
+			ps.setString(3,datosPersonales.getDatosImportantesCodigo()+"");
 			ps.setString(4, "A");
 
 			state = ps.executeUpdate();
@@ -88,8 +88,8 @@ public class DatosPersonalesDAO extends DAO<DatosPersonales> {
 			ps = bd.prepareStatement(sql);
 
 			// llenamos datos
-			ps.setString(1,datosPersonales.getDatosGeneralesCod()+"");
-			ps.setString(2,datosPersonales.getDatosImportantesCod()+"");
+			ps.setString(1,datosPersonales.getDatosGeneralesCodigo()+"");
+			ps.setString(2,datosPersonales.getDatosImportantesCodigo()+"");
 			ps.setString(3,datosPersonales.getEstadoRegistro()+"");
 			ps.setString(4,datosPersonales.getCod()+"");
 
