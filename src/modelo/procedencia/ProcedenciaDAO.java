@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.*;
 import java.util.*;
 
-//import src.modelo.DAO;
+import src.modelo.*;
 
 public class ProcedenciaDAO extends DAO<Procedencia> {
 
@@ -21,7 +21,7 @@ public class ProcedenciaDAO extends DAO<Procedencia> {
 	// Listar
 	public ArrayList<Procedencia> listar(){
 		ArrayList<Procedencia> listProcedencia = new ArrayList<Procedencia>();
-		String sql = "SELECT * FROM `DATOS_PROCEDENCIA`";
+		String sql = "SELECT * FROM `PROCEDENCIA`";
 
 		try{
 			con.conectar();

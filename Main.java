@@ -140,6 +140,7 @@ public class Main implements ActionListener {
 	public static void generateContent_Procedencia() {
 		VistaProcedencia vi = new VistaProcedencia();
 		frameContent.add(vi.getContent());
+		ControladorProcedencia con = new ControladorProcedencia(vi);
 	}
 
 	public static void main(String[] args) {
