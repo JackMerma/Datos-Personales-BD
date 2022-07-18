@@ -1,4 +1,4 @@
-package src.modelo.Contacto;
+package src.modelo.datosImportantes;
 
 public class DatosImportantes {
 	public int cod;

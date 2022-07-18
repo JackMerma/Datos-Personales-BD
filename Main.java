@@ -119,6 +119,7 @@ public class Main implements ActionListener {
 	public static void generateContent_DatImp() {
 		VistaDatosImportantes vi = new VistaDatosImportantes();
 		frameContent.add(vi.getContent());
+		ControladorDatosImportantes con = new ControladorDatosImportantes(vi);
 	}
 
 	// DATOS PERSONALES -------------------------------------
