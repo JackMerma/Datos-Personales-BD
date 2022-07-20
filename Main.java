@@ -11,7 +11,7 @@ public class Main implements ActionListener {
 
 	public static final String PROJECTNAME = "DATOS PERSONALES";
 	public static JFrame frame, frameContent;
-	public JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16;
+	public JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, bConsulta;
 
 	public Main() {
 		frame = new JFrame(PROJECTNAME);
@@ -27,6 +27,7 @@ public class Main implements ActionListener {
 		b5 = new JButton("Datos Personales");
 		b6 = new JButton("Datos Personales Contacto");
 		b7 = new JButton("Procedencia");
+		bConsulta = new JButton("Consulta");
 
 		b1.addActionListener((java.awt.event.ActionListener) this);
 		b2.addActionListener((java.awt.event.ActionListener) this);
@@ -35,6 +36,7 @@ public class Main implements ActionListener {
 		b5.addActionListener((java.awt.event.ActionListener) this);
 		b6.addActionListener((java.awt.event.ActionListener) this);
 		b7.addActionListener((java.awt.event.ActionListener) this);
+		bConsulta.addActionListener((java.awt.event.ActionListener) this);
 
 		JPanel panel = new JPanel();
 
@@ -48,6 +50,7 @@ public class Main implements ActionListener {
 		panel.add(b5);
 		panel.add(b6);
 		panel.add(b7);
+		panel.add(bConsulta);
 
 		frame.setSize(1000, 700);
 		frame.add(panel);
@@ -56,7 +59,9 @@ public class Main implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		Object E = e.getActionCommand();
-		FrameContent();
+		if(!E.equals("Consulta"))
+			FrameContent();
+
 		if (E.equals("Contacto")) {
 			System.out.println("Contacto");
 			generateContent_Contacto();
@@ -82,6 +87,9 @@ public class Main implements ActionListener {
 		} else if (E.equals("Procedencia")) {
 			System.out.println("Procedencia");
 			generateContent_Procedencia();
+		} else if (E.equals("Consulta")) {
+			System.out.println("Consulta");
+			generateContent_Consultar();
 		}
 	}
 
@@ -91,7 +99,6 @@ public class Main implements ActionListener {
 		frameContent.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frameContent.setLocationRelativeTo(frame);
 		frameContent.setVisible(true);
-
 	}
 
 	// CONTACTO -------------------------------------
@@ -141,6 +148,19 @@ public class Main implements ActionListener {
 		VistaProcedencia vi = new VistaProcedencia();
 		frameContent.add(vi.getContent());
 		ControladorProcedencia con = new ControladorProcedencia(vi);
+	}
+
+	// CONSULTAR -------------------------------------
+	public static void generateContent_Consultar() {
+		JFrame newFrame = new JFrame(PROJECTNAME);
+		newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		newFrame.setLocationRelativeTo(null);
+		newFrame.setLayout(new FlowLayout());
+		newFrame.setVisible(true);
+		newFrame.setSize(300,100);
+
+		VistaConsulta vi = new VistaConsulta();
+		newFrame.add(vi.getContent());
 	}
 
 	public static void main(String[] args) {
